@@ -2,6 +2,7 @@
 import React from 'react';
 import { Bot, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm';
 
 export const MessageBubble = ({ message }) => {
   const formatTime = (date) => {
@@ -35,7 +36,7 @@ export const MessageBubble = ({ message }) => {
         >
           {/* <p className="text-sm leading-relaxed">{message.text}</p> */}
           <div className="prose prose-sm max-w-none text-left">
-            <ReactMarkdown>{message.text}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.text}</ReactMarkdown>
           </div>
           
         </div>
