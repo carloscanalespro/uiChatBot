@@ -9,7 +9,7 @@ import useWebSocket from 'react-use-websocket';
 export const ChatInterface = () => {
 
   const myid = useRef(Math.floor(Math.random() * 100000));
-  const websocketurl = `ws://localhost:8000/ws/${myid.current}`;
+  const websocketurl = `ws://localhost:8000/messages/ws/${myid.current}`;
   const { sendMessage, lastMessage, readyState } = useWebSocket(
     websocketurl,
     {

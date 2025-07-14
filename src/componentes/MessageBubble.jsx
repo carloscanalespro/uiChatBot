@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Bot, User } from 'lucide-react';
+import ReactMarkdown from 'react-markdown'
 
 export const MessageBubble = ({ message }) => {
   const formatTime = (date) => {
@@ -32,7 +33,11 @@ export const MessageBubble = ({ message }) => {
               : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
           } ${message.isBot ? 'rounded-bl-md' : 'rounded-br-md'}`}
         >
-          <p className="text-sm leading-relaxed">{message.text}</p>
+          {/* <p className="text-sm leading-relaxed">{message.text}</p> */}
+          <div className="prose prose-sm max-w-none text-left">
+            <ReactMarkdown>{message.text}</ReactMarkdown>
+          </div>
+          
         </div>
         <p className={`text-xs text-gray-500 mt-1 ${message.isBot ? 'text-left' : 'text-right'}`}>
           {formatTime(message.timestamp)}
