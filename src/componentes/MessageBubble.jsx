@@ -35,7 +35,7 @@ export const MessageBubble = ({ message }) => {
           } ${message.isBot ? 'rounded-bl-md' : 'rounded-br-md'}`}
         >
           {/* <p className="text-sm leading-relaxed">{message.text}</p> */}
-          <div className="prose prose-sm max-w-none text-left">
+          <div className="prose prose-sm max-w-none text-left ">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.text}</ReactMarkdown>
           </div>
           
