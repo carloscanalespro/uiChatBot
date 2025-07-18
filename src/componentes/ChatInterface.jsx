@@ -33,7 +33,7 @@ export const ChatInterface = () => {
   useEffect(() => {
     if (lastMessage !== null) {
       let parsed_lastMesssage = JSON.parse(lastMessage.data)
-
+      setIsTyping(false);
       if(typeof parsed_lastMesssage.timestamp === "string"){
         parsed_lastMesssage.timestamp = new Date(parsed_lastMesssage.timestamp)
       }
@@ -60,7 +60,7 @@ export const ChatInterface = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
-    setIsTyping(true);
+    
 
     // Simulate bot response
       // const botMessage = {
@@ -72,7 +72,8 @@ export const ChatInterface = () => {
 
       // setMessages(prev => [...prev, botMessage]);
       sendMessage(JSON.stringify(userMessage));
-      setIsTyping(false);
+      setIsTyping(true);
+
   };
 
   return (

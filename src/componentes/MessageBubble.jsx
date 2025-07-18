@@ -36,7 +36,36 @@ export const MessageBubble = ({ message }) => {
         >
           {/* <p className="text-sm leading-relaxed">{message.text}</p> */}
           <div className="prose prose-sm max-w-none text-left ">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.text}</ReactMarkdown>
+            {/* <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.text}</ReactMarkdown> */}
+
+             <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          ul: ({ node, ...props }) => (
+            <ul className="list-disc list-inside ml-4" {...props} />
+          ),
+          ol: ({ node, ...props }) => (
+            <ol className="list-decimal list-inside ml-4" {...props} />
+          ),
+          li: ({ node, ...props }) => (
+            <li className="mb-1" {...props} />
+          ),
+          table: ({ node, ...props }) => (
+            <table className="table-auto border-collapse border border-gray-300 my-4" {...props} />
+          ),
+          thead: ({ node, ...props }) => (
+            <thead className="bg-gray-100" {...props} />
+          ),
+          th: ({ node, ...props }) => (
+            <th className="border border-gray-300 px-2 py-1 text-left" {...props} />
+          ),
+          td: ({ node, ...props }) => (
+            <td className="border border-gray-300 px-2 py-1" {...props} />
+          ),
+        }}
+      >
+        {message.text.replace(/\\n/g, '\n')}
+      </ReactMarkdown>
           </div>
           
         </div>
